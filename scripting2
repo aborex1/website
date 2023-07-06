@@ -1,0 +1,9 @@
+#!/bin/bash 
+cd /var/www/html
+sudo aws s3 sync s3://webcreate /var/www/html
+unzip s3-static-website-hosting-main.zip
+cd s3-static-website-hosting-main
+cp -r /var/www/html/s3-static-website-hosting-main/* /var/www/html
+systemctl enable httpd
+systemctl start httpd
+systemctl status httpd
